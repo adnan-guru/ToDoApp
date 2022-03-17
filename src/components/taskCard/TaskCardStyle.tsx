@@ -55,7 +55,6 @@ export const styles = StyleSheet.create({
     dateAndTimeRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: -5,
         marginBottom: 5,
     },
     smallText: {
@@ -124,6 +123,17 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.checkBox,
         transform: [{ rotate: "45deg" }],
     },
+
+
+    container: {
+        flex: 1,
+        justifyContent: "center",
+      },
+      horizontal: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10,
+      }
 
 
 })

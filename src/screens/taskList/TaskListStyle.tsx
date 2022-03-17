@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
     bgHeaderClr:{
-        height:20,
+        height:30,
         width:'100%',
         backgroundColor:Colors.headerClr,
     },
@@ -19,5 +19,14 @@ export const styles = StyleSheet.create({
         borderTopLeftRadius:22,
         borderTopRightRadius:22,
         marginTop:-20,
-    }
+    },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+      },
+      horizontal: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10,
+      }
 })

@@ -1,35 +1,30 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 import TaskCard from '../../components/taskCard/TaskCard';
 import { styles } from './TaskListStyle'
-import AppLoading from 'expo-app-loading';
-import Fonts from '../../constants/Fonts';
 import Header from '../../components/header/Header';
-// import { gql,useQuery,useMutation } from '@apollo/client';
+import UseTaskList from './UseTaskList';
+import { Text } from 'native-base';
+import { colors } from '../../constants/Contants';
 const Tasklist = () => {
-  const [{ fontsLoaded }] = Fonts();
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  };
-
-
-  //   const EXCHANGE_RATES = gql`
-  //   query GetExchangeRates {
-  //     rates(currency: "USD") {
-  //       currency
-  //       rate
-  //     }
-  //   }
-  // `;
-  // const [fetDate] = useMutation(EXCHANGE_RATES);
-
+  const [{ data, loading, error, check, setCheck, completeHandler }] = UseTaskList();
   return (
     <View style={styles.pageContainer}>
       <Header />
       <View style={styles.bgHeaderClr} />
       <View style={styles.body}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <TaskCard />
+          {
+            loading ?
+              <View style={[styles.container, styles.horizontal]}>
+                <ActivityIndicator color={colors.secondaryColor} size="large" />
+              </View>
+              :
+              error?
+              <Text>Error{error.message}</Text>
+              :
+              <TaskCard check={check} setCheck={setCheck} completeHandler={completeHandler} />
+          }
         </ScrollView>
       </View>
     </View>
